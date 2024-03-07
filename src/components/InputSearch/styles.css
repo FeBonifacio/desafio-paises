@@ -1,0 +1,50 @@
+.div-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+input {
+    color: #fff;
+    font-size: 28px;
+    width: 50%;
+    padding: 20px 5px 5px;
+    background-color: #4f4f4f;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn {
+    margin-left: 10px; /* Espaçamento entre o input e o botão */
+    font-size: 15px;
+    font-family: Arial;
+    width: 100px; /* Ajuste o tamanho do botão conforme necessário */
+    height: 50px;
+    border-width: 1px;
+    color: #eef0f3;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: linear-gradient(#383a3b, #67696c);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: linear-gradient(#468ccf, #63b8ee);
+}
+
+.contant-table {
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itens {
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #807777;
+}
