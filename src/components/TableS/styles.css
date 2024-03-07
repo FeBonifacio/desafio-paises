@@ -31,3 +31,27 @@
     background: linear-gradient(#383a3b, #67696c);
     cursor: pointer;
 }
+
+.buttonCSV {
+    margin: 20px;
+    padding: 20px;
+}
+
+.buttonCSV button {
+    padding: 5px;
+    width: 100%;
+    margin-left: 10px; /* Espaçamento entre o input e o botão */
+    font-size: 15px;
+    font-family: Arial;
+    width: 100px; /* Ajuste o tamanho do botão conforme necessário */
+    height: 50px;
+    border-width: 1px;
+    color: #eef0f3;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: linear-gradient(#383a3b, #67696c);
+    cursor: pointer;
+}
