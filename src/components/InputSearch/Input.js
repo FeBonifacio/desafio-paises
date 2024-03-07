@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Table from '../TableS';
 
 const Input = () => {
     const [nameCountries, setNameCountries] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [searchClick, setSearchClick] = useState(false); // Vai aparecer somente quando clicar no botão
+    const [searchHistory, setSearchHistory] = useState([]);
+    
 
     const handleInput = (e) => {
         setNameCountries(e.target.value);
@@ -22,33 +25,23 @@ const Input = () => {
         } catch (error) {
             console.error('Erro ao buscar país:', error);
         }
+
+        setSearchHistory(preventHistory => [...preventHistory, nameCountries]); // colocar tudo no array
     }
 
-    // const fetchCurrency = async (country) => {
-    //     try {
-    //         const currencyResponse = await fetch(`https://restcountries.com/v3.1/currency/${country.currencies[0]?.code}`);
-    //         const currencyData = await currencyResponse.json();
-    //         const currency = currencyData[0]?.currencies[0]?.name || 'Moeda não disponível';
-    //         return { ...country, currency };
-    //     } catch (error) {
-    //         console.error('Erro ao buscar moeda:', error);
-    //         return { ...country, currency: 'Moeda não disponível' };
-    //     }
-    // };
+    const handleHistory = async (countryName) => {
+        setNameCountries(countryName);
+        setSearchClick(true);
 
-    // useEffect(() => {
-    //     if (searchResult.length > 0 && searchClick) {
-    //         const fetchData = async () => {
-    //             const updatedSearchResult = [];
-    //             for (const country of searchResult) {
-    //                 const updatedCountry = await fetchCurrency(country);
-    //                 updatedSearchResult.push(updatedCountry);
-    //             }
-    //             setSearchResult(updatedSearchResult);
-    //         };
-    //         fetchData();
-    //     }
-    // }, [searchResult, searchClick]);
+        try {
+            // Buscar país
+            const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+            const data = await response.json();
+            setSearchResult(data);
+        } catch (error) {
+            console.error('Erro ao buscar país:', error);
+        }
+    }
 
     return (
         <div>
@@ -80,6 +73,8 @@ const Input = () => {
                     )}
                 </ul>
             )}
+
+        <Table searchHistory={searchHistory} handleHistory={handleHistory} />
         </div>
     );
 }
